@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+body{
+  font-family: Arial;
+  text-align: center;
+  padding-top: 100px;
+  background: #f0f8ff;
+}
+.box{
+  background: white;
+  padding: 30px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+input{
+  padding: 8px;
+  margin: 5px;
+  width: 80%;
+}
+button{
+  padding: 8px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Secret Login</h2>
+<input type="text" id="username" placeholder="ชื่อ">
+<br>
+<input type="password" id="password" placeholder="รหัสผ่าน">
+<br>
+<button onclick="login()">เข้าสู่ระบบ</button>
+<p id="error"></p>
+</div>
+
+<script>
+const users = {
+  "A": { password: "111", message: "ขอบคุณที่อยู่ข้างกันเสมอ ❤️" },
+  "B": { password: "222", message: "ดีใจที่มีเธอเป็นเพื่อน 🌸" },
+  "C": { password: "333", message: "เธอคือความทรงจำดี ๆ ของเรา ✨" }
+};
+
+function login(){
+  let name = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  if(users[name] && users[name].password === pass){
+    localStorage.setItem("currentUser", name);
+    window.location.href = "home.html";
+  }else{
+    document.getElementById("error").innerHTML = "ชื่อหรือรหัสผ่านผิด";
+  }
+}
+</script>
+
+</body>
+</html>
